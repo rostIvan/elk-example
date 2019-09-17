@@ -1,0 +1,7 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - /var/log/filebeat-source/bot.log
+
+output.logstash:
+  hosts: ["elk:5044"]

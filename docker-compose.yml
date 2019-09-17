@@ -10,4 +10,10 @@ services:
     volumes:
       - ./elasticsearch/elk-data:/var/lib/elasticsearch
       - ./logstash/conf.d:/etc/logstash/conf.d
-      - ./logs:/var/log/elk-source
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.3.2
+    volumes:
+      - ./filebeat/conf.d/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ./logs:/var/log/filebeat-source
+      - /var/run/docker.sock:/var/run/docker.sock:ro
